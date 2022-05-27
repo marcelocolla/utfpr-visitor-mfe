@@ -3,8 +3,8 @@ import { PageLayout } from 'components/PageLayout'
 
 export const HomePage = () => {
   return (
-    <PageLayout title="Home">
-      <h2>Page content</h2>
+    <PageLayout title="Visitas">
+      <h2>Visitas</h2>
     </PageLayout>
   )
 }

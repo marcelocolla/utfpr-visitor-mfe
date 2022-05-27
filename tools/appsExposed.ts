@@ -3,7 +3,7 @@ interface ModuleExposes {
 }
 
 const appsExposed: ModuleExposes = {
-  './Routes': './src/app/RoutesApp.tsx',
+  './VisitorRoutes': './src/app/RoutesApp.tsx',
 }
 
 export default appsExposed
