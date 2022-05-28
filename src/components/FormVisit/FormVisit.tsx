@@ -16,7 +16,7 @@ export const FormVisit = ({ visita }: FormVisitProps) => {
 
   const initialValues: VisitorValues = {
     id_visita: visita.id_visita,
-    id_liberacao: visita.liberacao?.id_liberacao ?? '',
+    id_liberacao: visita.liberacao?.id_liberacao ?? 0,
     id_vigilante: visita.id_vigilante_saida ?? '',
     nome_pessoa: visita.nome_pessoa || '',
     ra_aluno: visita.liberacao?.Aluno?.ra_aluno || '',
@@ -27,16 +27,22 @@ export const FormVisit = ({ visita }: FormVisitProps) => {
   }
 
   const registrarSaida = async (values: VisitorValues) => {
-    await httpClient.put('/visita', {
-      id_visita: visita.id_visita,
-      data_saida: values.data_saida,
-      hora_saida: values.hora_saida,
-      id_liberacao: values.id_liberacao,
-      id_vigilante_saida: values.id_vigilante,
-      observacoes: values.observacoes,
-    })
+    try {
+      await httpClient.put('/visita', {
+        id_visita: visita.id_visita,
+        data_saida: values.data_saida,
+        hora_saida: values.hora_saida,
+        id_liberacao: values.id_liberacao,
+        id_vigilante_saida: values.id_vigilante,
+        observacoes: values.observacoes,
+      })
 
-    history.go(0)
+      history.go(0)
+    } catch (err) {
+      console.error('>>> Expection request visitor update', err)
+
+      alert('Ocorreu um erro ao registrar a saída da pessoa! \n\nTente novamente.')
+    }
   }
 
   return (

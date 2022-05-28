@@ -21,14 +21,14 @@ export interface VisitorModel {
   nome_pessoa?: string
   observacoes?: string
   liberacao?: {
-    id_liberacao: string
+    id_liberacao: number
     Aluno: AlunoType
   }
 }
 
 export interface VisitorValues {
   id_visita: number
-  id_liberacao: string
+  id_liberacao: number
   id_vigilante: string
   nome_pessoa: string
   ra_aluno: string

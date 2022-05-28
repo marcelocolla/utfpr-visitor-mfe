@@ -15,17 +15,17 @@ export const FormVisitFields = () => {
         <FormLine>
           <InputField name="nome_pessoa" label="Nome do Aluno" disabled={true} />
         </FormLine>
-        <FormLine>
+        <FormLine mt="10px">
           <InputField name="ra_aluno" label="Matrícula" disabled={true} />
         </FormLine>
-        <FormLine>
+        <FormLine mt="10px">
           <InputField name="data_saida" label="Data" disabled={true} />
           <InputField name="hora_saida" label="Horário" disabled={true} />
         </FormLine>
-        <FormLine>
+        <FormLine mt="10px">
           <InputField name="nome_pessoa" label="Vigilante Responsável" disabled={true} />
         </FormLine>
-        <FormLine>
+        <FormLine mt="10px">
           <InputField
             name="placa_veiculo"
             label="Informe a placa do veículo"
@@ -33,7 +33,7 @@ export const FormVisitFields = () => {
             disabled={true}
           />
         </FormLine>
-        <FormLine>
+        <FormLine mt="10px">
           <InputField name="observacoes" label="Observações" />
         </FormLine>
       </FormBody>
