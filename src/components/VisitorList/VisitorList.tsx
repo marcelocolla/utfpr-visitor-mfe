@@ -32,18 +32,19 @@ export const VisitorList = React.memo(() => {
   return (
     <Fragment>
       <BoxList>
-        {visitas?.map((el) => (
-          <Card
-            key={el.id_visita}
-            name={
-              el.liberacao?.Aluno?.Pessoa?.nome_pessoa || el.nome_pessoa || 'Nome não informado'
-            }
-            leftInfo={`Placa: ${el.placa_veiculo ?? 'Não informado'}`}
-            rightInfo={`Entrada às ${el.hora_entrada?.slice(0, 5)}`}
-            removeDisabled={true}
-            onEdition={() => exibirVisita(el)}
-          />
-        ))}
+        {visitas &&
+          visitas.map((el) => (
+            <Card
+              key={el.id_visita}
+              name={
+                el.liberacao?.Aluno?.Pessoa?.nome_pessoa || el.nome_pessoa || 'Nome não informado'
+              }
+              leftInfo={`Placa: ${el.placa_veiculo ?? 'Não informado'}`}
+              rightInfo={`Entrada às ${el.hora_entrada?.slice(0, 5)}`}
+              removeDisabled={true}
+              onEdition={() => exibirVisita(el)}
+            />
+          ))}
       </BoxList>
 
       {selection && (
