@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Card, Modal } from '@utfprfabricadesoftware/utfpr-lib-ui-react'
+import { Typography } from '@material-ui/core'
 
 import { VisitorModel } from 'types/Visitor'
 import httpClient from 'services/httpClient'
@@ -8,16 +9,18 @@ import { FormVisit } from 'components/FormVisit'
 import { BoxList } from './VisitorList.styles'
 
 export const VisitorList = React.memo(() => {
-  const [visitas, setVisitas] = React.useState<VisitorModel[]>([])
+  const [visitas, setVisitas] = React.useState<VisitorModel[]>()
   const [selection, setSelection] = React.useState<VisitorModel | null>(null)
 
   const loadVisitors = async () => {
     try {
       const response = await httpClient.get('/visita/visitaDia')
+      const data = response.data.visita?.rows || []
 
-      setVisitas(response.data.visita.rows)
+      setVisitas(data)
     } catch (err) {
       console.error(err)
+      alert('Aconteceu uma falha ao buscar lista de visitas!')
     }
   }
 
@@ -45,6 +48,12 @@ export const VisitorList = React.memo(() => {
               onEdition={() => exibirVisita(el)}
             />
           ))}
+
+        {Array.isArray(visitas) && visitas.length === 0 && (
+          <Typography variant="subtitle1" gutterBottom>
+            Nenhum registro encontrado!
+          </Typography>
+        )}
       </BoxList>
 
       {selection && (
